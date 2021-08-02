@@ -11,7 +11,7 @@ local theme_path = gfs.get_configuration_dir() .. "themes/vera/"
 
 local theme = {}
 
-theme.font          = "SF Pro Display Semibold 12"
+theme.font          = "SF Pro Text Semibold 11"
 
 theme.bg_normal     = "#f5f6fa"
 theme.bg_focus      = "#f5f6fa"
@@ -73,7 +73,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[border_color|border_width]
 theme.menu_submenu = ">"
 theme.menu_height = dpi(20)
-theme.menu_font = "SF Pro Display Light 12"
+theme.menu_font = "SF Pro Text Regular 12"
 theme.menu_border_width = dpi(0)
 theme.menu_width  = dpi(100)
 
