@@ -5,3 +5,6 @@ function run {
     $@&
   fi
 }
+
+# Load previously configured wallpaper
+run nitrogen --restore
