@@ -512,35 +512,63 @@ client.connect_signal("request::titlebars", function(c)
         awful.button({ }, 1, function()
             c:emit_signal("request::activate", "titlebar", {raise = true})
             awful.mouse.client.move(c)
-        end),
-        awful.button({ }, 3, function()
-            c:emit_signal("request::activate", "titlebar", {raise = true})
-            awful.mouse.client.resize(c)
         end)
     )
+    local args = { size = 40 }
 
-    awful.titlebar(c) : setup {
-        { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout  = wibox.layout.fixed.horizontal
+    awful.titlebar(c, args) : setup
+    {
+        {
+            layout = wibox.layout.fixed.horizontal,
+            forced_height = 0,
+            buttons = buttons
         },
-        { -- Middle
-            { -- Title
-                align  = "center",
-                widget = awful.titlebar.widget.titlewidget(c)
+        {
+            {
+                { -- Left
+                    layout  = wibox.layout.fixed.horizontal,
+                    buttons = buttons
+                },
+                { -- Middle
+                    {
+                        align = "center",
+                        widget = awful.titlebar.widget.titlewidget(c)
+                    },
+                    layout  = wibox.layout.flex.horizontal,
+                    buttons = buttons
+                },
+                { -- Right
+                    {
+                        awful.titlebar.widget.maximizedbutton(c),
+                        awful.titlebar.widget.ontopbutton(c) ,
+                        awful.titlebar.widget.closebutton    (c),
+                        layout = wibox.layout.fixed.horizontal(),
+                        spacing = 7
+                    },
+                    widget = wibox.container.margin,
+                    top = 12,
+                    bottom = 11,
+                    right = 0,
+                    left = 0
+                },
+                layout = wibox.layout.align.horizontal,
+                expand = "inside"
             },
-            buttons = buttons,
-            layout  = wibox.layout.flex.horizontal
+            widget = wibox.container.margin,
+            top = 0,
+            bottom = 0,
+            right = 12,
+            left = 12,
+            forced_height = 38
         },
-        { -- Right
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
-            layout = wibox.layout.fixed.horizontal(),
-            spacing = 7,
+        {
+            widget = wibox.widget.separator,
+            orientation = "horizontal",
+            color = beautiful.separator,
+            buttons = buttons
         },
-        layout = wibox.layout.align.horizontal
+        layout = wibox.layout.align.vertical,
+        expand = "outside"
     }
 end)
 
