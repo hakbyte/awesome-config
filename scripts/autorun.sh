@@ -12,3 +12,6 @@ run nitrogen --restore
 
 # Enable compositor effects.
 run picom --config ~/.config/awesome/conf/picom.cfg
+
+# Network manager tray icon.
+run nm-applet
