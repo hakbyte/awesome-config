@@ -34,7 +34,7 @@ theme.separator = "#dadbde"
 theme.fg_normal = "#252525"
 theme.fg_focus = "#000000"
 
-theme.useless_gap   = dpi(20)
+theme.useless_gap   = dpi(6)
 theme.border_width  = dpi(3)
 theme.border_focus = "#6c6cb3"
 theme.border_normal  = "#a3a3e6"
