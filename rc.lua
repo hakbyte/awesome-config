@@ -588,4 +588,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Start up user-defined apps.
-awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
+awesome.connect_signal("startup", function()
+    awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
+end)
