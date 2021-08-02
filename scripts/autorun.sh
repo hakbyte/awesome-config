@@ -9,3 +9,6 @@ function run {
 
 # Load previously configured wallpaper.
 run nitrogen --restore
+
+# Enable compositor effects
+run picom --config ~/.config/awesome/conf/picom.cfg
