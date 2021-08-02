@@ -1,0 +1,108 @@
+configuration {
+    font:              "SF Pro Text Semibold 12";
+    location:          3;
+}
+
+* {
+    background:         #282C33;
+    foreground:         #A9ABB0;
+    foreground-alt:     #E5E5E7;
+    border:             #5895DCff;
+    selected:           #5e35b1;
+	logo:               #A9ABB0;
+}
+
+window {
+    background-color:   @background;
+    text-color:         @foreground;
+    border-radius:      0px;
+    height:             250px;
+    width:              200px;
+    x-offset:           -10px;
+    y-offset:           50px;
+}
+
+prompt {
+    enabled: 			true;
+	padding: 			4px 4px 20px 6px;
+	background-color: 	@background;
+	text-color: 		@foreground;
+	font:				"feather 15";
+}
+
+textbox-prompt-colon {
+	expand: 			false;
+	str: 				"";
+    background-color:   @background;
+    text-color:         @logo;
+    padding:            5px 0px 0px 5px;
+	font:				"feather 18";
+}
+
+inputbar {
+	children:           [ textbox-prompt-colon, prompt ];
+    background-color:   @background;
+    text-color:         @foreground;
+    expand:             false;
+    border:             0px 0px 0px 0px;
+    border-color:       @border;
+    margin:             0px 0px 0px 0px;
+    padding:            0px 0px 0px 0px;
+    position:           center;
+}
+
+entry {
+    background-color:   @background;
+    text-color:         @foreground;
+    placeholder-color:  @foreground;
+    expand:             true;
+    horizontal-align:   0;
+    placeholder:        "Search";
+    blink:              true;
+    padding:            4px 0px 0px 0px;
+}
+
+case-indicator {
+    background-color:   @background;
+    text-color:         @foreground;
+    spacing:            0;
+}
+
+listview {
+    background-color:   @background;
+    columns:            1;
+    spacing:            4px;
+    cycle:              true;
+    dynamic:            true;
+    layout:             vertical;
+}
+
+mainbox {
+    background-color:   @background;
+    children:           [ inputbar, listview ];
+    spacing:            5px;
+    padding:            5px 5px 5px 5px;
+}
+
+element {
+    background-color:   @background;
+    text-color:         @foreground;
+    orientation:        horizontal;
+    border-radius:      4px;
+    padding:            6px 6px 6px 6px;
+}
+
+element-text {
+    expand:             true;
+    horizontal-align:   0;
+    vertical-align:     0;
+    margin:             2px 0px 2px 2px;
+}
+
+element selected {
+    background-color:   @selected;
+    text-color:         @foreground-alt;
+    border:             0px;
+    border-radius:      4px;
+    border-color:       @border;
+}
