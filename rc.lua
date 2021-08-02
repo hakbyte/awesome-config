@@ -283,6 +283,9 @@ globalkeys = gears.table.join(
                   end
               end,
               {description = "restore minimized", group = "client"}),
+    -- Powermenu
+    awful.key({ modkey, "Control" }, "l",     function () awful.spawn.with_shell("~/.config/awesome/scripts/powermenu.sh") end,
+        {description = "launch powermenu ", group = "launcher"}),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
