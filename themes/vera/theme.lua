@@ -109,9 +109,6 @@ theme.titlebar_floating_button_focus_inactive  = theme_path.."titlebar/floating_
 theme.titlebar_floating_button_normal_active = theme_path.."titlebar/floating_normal_active.png"
 theme.titlebar_floating_button_focus_active  = theme_path.."titlebar/floating_focus_active.png"
 
-
-theme.wallpaper = theme_path.."cloud_orange.jpg"
-
 -- You can use your own layout icons like this:
 theme.layout_fairh = theme_path.."layouts/fairhw.png"
 theme.layout_fairv = theme_path.."layouts/fairvw.png"
