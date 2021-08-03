@@ -71,11 +71,11 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu = ">"
-theme.menu_height = dpi(20)
+theme.menu_submenu = "" -- right arrow key (U+F0DA)
+theme.menu_height = dpi(24)
 theme.menu_font = "SF Pro Text Regular 12"
 theme.menu_border_width = dpi(0)
-theme.menu_width  = dpi(100)
+theme.menu_width  = dpi(140)
 
 -- You can add as many variables as
 -- you wish and access them by using
