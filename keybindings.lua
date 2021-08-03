@@ -9,19 +9,23 @@ keys = {}
 keys.global = gears.table.join(
     {
         awful.key(
-            {mod}, "s", hotkeys_popup.show_help,
+            {mod}, "s",
+            hotkeys_popup.show_help,
             {description="show help", group="awesome"}
         ),
         awful.key(
-            {mod}, "Left", awful.tag.viewprev,
+            {mod}, "Left",
+            awful.tag.viewprev,
             {description = "view previous", group = "tag"}
         ),
         awful.key(
-            {mod}, "Right", awful.tag.viewnext,
+            {mod}, "Right",
+            awful.tag.viewnext,
             {description = "view next", group = "tag"}
         ),
         awful.key(
-            {mod}, "Escape", awful.tag.history.restore,
+            {mod}, "Escape",
+            awful.tag.history.restore,
             {description = "go back", group = "tag"}
         ),
         awful.key(
@@ -91,54 +95,117 @@ keys.global = gears.table.join(
         ),
 
         -- Standard program
-        awful.key({ mod,           }, "Return", function () awful.spawn(terminal) end,
-        {description = "open a terminal", group = "launcher"}),
-        awful.key({ mod, "Control" }, "r", awesome.restart,
-        {description = "reload awesome", group = "awesome"}),
+        awful.key(
+            {mod}, "Return",
+            function ()
+                awful.spawn(terminal)
+            end,
+            {description = "open a terminal", group = "launcher"}
+        ),
+        awful.key(
+            {mod, "Control"}, "r",
+            awesome.restart,
+            {description = "reload awesome", group = "awesome"}
+        ),
         awful.key({ mod, "Shift"   }, "q", awesome.quit,
         {description = "quit awesome", group = "awesome"}),
 
-        awful.key({ mod,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-        {description = "increase master width factor", group = "layout"}),
-        awful.key({ mod,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
-        {description = "decrease master width factor", group = "layout"}),
-        awful.key({ mod, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
-        {description = "increase the number of master clients", group = "layout"}),
-        awful.key({ mod, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
-        {description = "decrease the number of master clients", group = "layout"}),
-        awful.key({ mod, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-        {description = "increase the number of columns", group = "layout"}),
-        awful.key({ mod, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-        {description = "decrease the number of columns", group = "layout"}),
-        awful.key({ mod,           }, "space", function () awful.layout.inc( 1)                end,
-        {description = "select next", group = "layout"}),
-        awful.key({ mod, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-        {description = "select previous", group = "layout"}),
+        -- Layout manipulation
+        awful.key(
+            {mod}, "l",
+            function ()
+                awful.tag.incmwfact(0.05)
+            end,
+            {description = "increase master width factor", group = "layout"}
+        ),
+        awful.key(
+            {mod}, "h",
+            function ()
+                awful.tag.incmwfact(-0.05)
+            end,
+            {description = "decrease master width factor", group = "layout"}
+        ),
+        awful.key(
+            {mod, "Shift"}, "h",
+            function ()
+                awful.tag.incnmaster(1, nil, true)
+            end,
+            {description = "increase the number of master clients", group = "layout"}
+        ),
+        awful.key(
+            {mod, "Shift"}, "l",
+            function ()
+                awful.tag.incnmaster(-1, nil, true)
+            end,
+            {description = "decrease the number of master clients", group = "layout"}
+        ),
+        awful.key(
+            {mod, "Control"}, "h",
+            function ()
+                awful.tag.incncol(1, nil, true)
+            end,
+            {description = "increase the number of columns", group = "layout"}
+        ),
+        awful.key(
+            {mod, "Control"}, "l",
+            function ()
+                awful.tag.incncol(-1, nil, true)
+            end,
+            {description = "decrease the number of columns", group = "layout"}
+        ),
+        awful.key(
+            {mod}, "space",
+            function ()
+                awful.layout.inc( 1)
+            end,
+            {description = "select next", group = "layout"}
+        ),
+        awful.key(
+            {mod, "Shift"}, "space",
+            function ()
+                awful.layout.inc(-1)
+            end,
+            {description = "select previous", group = "layout"}
+        ),
+        awful.key(
+            {mod, "Control"}, "n",
+            function ()
+                local c = awful.client.restore()
+                -- Focus restored client
+                if c then
+                    c:emit_signal(
+                        "request::activate", "key.unminimize", {raise = true}
+                    )
+                end
+            end,
+            {description = "restore minimized", group = "client"}),
 
-        awful.key({ mod, "Control" }, "n",
-        function ()
-            local c = awful.client.restore()
-            -- Focus restored client
-            if c then
-            c:emit_signal(
-                "request::activate", "key.unminimize", {raise = true}
-            )
-            end
-        end,
-        {description = "restore minimized", group = "client"}),
         -- Powermenu
-        awful.key({ mod, "Control" }, "l",     function () awful.spawn.with_shell("~/.config/awesome/scripts/powermenu.sh") end,
-        {description = "launch powermenu ", group = "launcher"}),
+        awful.key(
+            {mod, "Control"}, "l",
+            function ()
+                awful.spawn.with_shell("~/.config/awesome/scripts/powermenu.sh")
+            end,
+            {description = "launch powermenu ", group = "launcher"}
+        ),
 
         -- Prompt
-        awful.key({ mod },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-        {description = "run prompt", group = "launcher"}),
-
-        awful.key({ mod },            "d",     function () awful.spawn.with_shell("~/.config/awesome/scripts/launcher.sh") end,
-        {description = "run rofi launcher", group = "launcher"}),
-
         awful.key(
-            { mod }, "x",
+            {mod}, "r",
+            function ()
+                awful.screen.focused().mypromptbox:run()
+            end,
+            {description = "run prompt", group = "launcher"}
+        ),
+        awful.key(
+            {mod}, "d",
+            function ()
+                awful.spawn.with_shell("~/.config/awesome/scripts/launcher.sh")
+            end,
+            {description = "run rofi launcher", group = "launcher"}
+        ),
+        awful.key(
+            {mod}, "x",
             function ()
                 awful.prompt.run {
                 prompt       = "Run Lua code: ",
@@ -152,8 +219,10 @@ keys.global = gears.table.join(
 
         -- Menubar
         awful.key(
-            { mod }, "p",
-            function() menubar.show() end,
+            {mod}, "p",
+            function()
+                menubar.show()
+            end,
             {description = "show the menubar", group = "launcher"}
         )
     }
@@ -161,48 +230,81 @@ keys.global = gears.table.join(
 
 keys.client = gears.table.join(
     {
-        awful.key({ mod,           }, "f",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "toggle fullscreen", group = "client"}),
+        awful.key(
+            {mod}, "f",
+            function (c)
+                c.fullscreen = not c.fullscreen
+                c:raise()
+            end,
+            {description = "toggle fullscreen", group = "client"}
+        ),
 
-        awful.key({ mod, "Shift"   }, "c",      function (c) c:kill()                         end,
-            {description = "close", group = "client"}),
-        awful.key({ mod, "Control" }, "space",  awful.client.floating.toggle                     ,
-            {description = "toggle floating", group = "client"}),
-        awful.key({ mod, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end,
-            {description = "move to master", group = "client"}),
-        awful.key({ mod,           }, "o",      function (c) c:move_to_screen()               end,
-            {description = "move to screen", group = "client"}),
-        awful.key({ mod,           }, "t",      function (c) c.ontop = not c.ontop            end,
-            {description = "toggle keep on top", group = "client"}),
-        awful.key({ mod,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end ,
-        {description = "minimize", group = "client"}),
-        awful.key({ mod,           }, "m",
-        function (c)
-            c.maximized = not c.maximized
-            c:raise()
-        end ,
-        {description = "(un)maximize", group = "client"}),
-        awful.key({ mod, "Control" }, "m",
-        function (c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end ,
-        {description = "(un)maximize vertically", group = "client"}),
-        awful.key({ mod, "Shift"   }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        awful.key(
+            {mod, "Shift"}, "c",
+            function (c)
+                c:kill()
+            end,
+            {description = "close", group = "client"}
+        ),
+        awful.key(
+            {mod, "Control"}, "space",
+            awful.client.floating.toggle,
+            {description = "toggle floating", group = "client"}
+        ),
+        awful.key(
+            {mod, "Control"}, "Return",
+            function (c)
+                c:swap(awful.client.getmaster())
+            end,
+            {description = "move to master", group = "client"}
+        ),
+        awful.key(
+            {mod}, "o",
+            function (c)
+                c:move_to_screen()
+            end,
+            {description = "move to screen", group = "client"}
+        ),
+        awful.key(
+            {mod}, "t",
+            function (c)
+                c.ontop = not c.ontop
+            end,
+            {description = "toggle keep on top", group = "client"}
+        ),
+        awful.key(
+            {mod}, "n",
+            function (c)
+                -- The client currently has the input focus, so it cannot be
+                -- minimized, since minimized clients can't have the focus.
+                c.minimized = true
+            end,
+            {description = "minimize", group = "client"}
+        ),
+        awful.key(
+            {mod}, "m",
+            function (c)
+                c.maximized = not c.maximized
+                c:raise()
+            end ,
+            {description = "(un)maximize", group = "client"}
+        ),
+        awful.key(
+            {mod, "Control"}, "m",
+            function (c)
+                c.maximized_vertical = not c.maximized_vertical
+                c:raise()
+            end ,
+            {description = "(un)maximize vertically", group = "client"}
+        ),
+        awful.key(
+            {mod, "Shift"}, "m",
+            function (c)
+                c.maximized_horizontal = not c.maximized_horizontal
+                c:raise()
+            end ,
+            {description = "(un)maximize horizontally", group = "client"}
+        )
     }
 )
 
