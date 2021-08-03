@@ -1,5 +1,4 @@
 local awful = require("awful")
-local menubar = require("menubar")
 local gears = require("gears")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
@@ -216,15 +215,6 @@ keys.global = gears.table.join(
             end,
             {description = "lua execute prompt", group = "awesome"}
         ),
-
-        -- Menubar
-        awful.key(
-            {mod}, "p",
-            function()
-                menubar.show()
-            end,
-            {description = "show the menubar", group = "launcher"}
-        )
     }
 )
 
