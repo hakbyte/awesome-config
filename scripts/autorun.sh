@@ -15,3 +15,6 @@ run picom --config ~/.config/awesome/conf/picom.cfg
 
 # Network manager tray icon.
 run nm-applet
+
+# Start power management.
+run xfce4-power-manager
