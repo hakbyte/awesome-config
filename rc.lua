@@ -207,7 +207,7 @@ awful.screen.connect_for_each_screen(function(s)
         {
             position = "top",
             screen = s,
-            height = 32,
+            height = 35,
         }
     )
 
