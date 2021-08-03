@@ -66,7 +66,8 @@ keys.global = gears.table.join(
         ),
         awful.key(
             {mod, "Control"}, "j",
-            function () awful.screen.focus_relative(1)
+            function ()
+                awful.screen.focus_relative(1)
             end,
             {description = "focus the next screen", group = "screen"}
         ),
