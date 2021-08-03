@@ -181,7 +181,7 @@ keys.global = gears.table.join(
 
         -- Powermenu
         awful.key(
-            {mod, "Control"}, "l",
+            {mod, "Control"}, "p",
             function ()
                 awful.spawn.with_shell("~/.config/awesome/scripts/powermenu.sh")
             end,
