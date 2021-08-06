@@ -77,7 +77,7 @@ local function worker(args)
         end)
     end)
 
-    watch(get_volume_cmd, 1, update_graphic, volumebar_widget)
+    watch(get_volume_cmd, 0.05, update_graphic, volumebar_widget)
 
     return volumebar_widget
 end
