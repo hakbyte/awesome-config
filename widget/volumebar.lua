@@ -1,12 +1,5 @@
--------------------------------------------------
--- Volume Bar Widget for Awesome Window Manager
--- Shows the current volume level
--- More details could be found here:
--- https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumebar-widget
-
--- @author Pavel Makhov
--- @copyright 2018 Pavel Makhov
--------------------------------------------------
+-- Volume Bar Widget
+-- Based on https://github.com/streetturtle/awesome-wm-widgets/tree/master/volumebar-widget
 
 local awful = require("awful")
 local beautiful = require("beautiful")
