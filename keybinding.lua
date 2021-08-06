@@ -216,6 +216,29 @@ keys.global = gears.table.join(
             end,
             {description = "lua execute prompt", group = "awesome"}
         ),
+
+        -- Volume controls
+        awful.key(
+            {}, "XF86AudioRaiseVolume",
+            function ()
+                awful.spawn.with_shell("pamixer --increase 2")
+            end,
+            {description = "Increase volume", group = "media"}
+        ),
+        awful.key(
+            {}, "XF86AudioLowerVolume",
+            function ()
+                awful.spawn.with_shell("pamixer --decrease 2")
+            end,
+            {description = "Decrease volume", group = "media"}
+        ),
+        awful.key(
+            {}, "XF86AudioMute",
+            function ()
+                awful.spawn.with_shell("pamixer --toggle-mute")
+            end,
+            {description = "Toggle volume (mute/unmute)", group = "media"}
+        )
     }
 )
 
