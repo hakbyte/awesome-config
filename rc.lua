@@ -18,6 +18,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 local keys = require("keybinding")
+local volumebar = require("widget.volumebar")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -247,6 +248,16 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
+            volumebar(
+                {
+                    main_color = '#af13f7',
+                    mute_color = '#ff0000',
+                    bg_color = "#c1c7c97f",
+                    width = 100,
+                    shape = 'rounded_bar',
+                    margins = 15,
+                }
+            ),
             mytextclock,
             s.mylayoutbox,
         },
