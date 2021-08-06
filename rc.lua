@@ -255,11 +255,24 @@ end)
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+root.buttons(
+    gears.table.join(
+        awful.button(
+            {}, 3,
+            function ()
+                mymainmenu:toggle()
+            end
+        ),
+        awful.button(
+            {}, 4,
+            awful.tag.viewnext
+        ),
+        awful.button(
+            {}, 5,
+            awful.tag.viewprev
+        )
+    )
+)
 -- }}}
 
 -- {{{ Key bindings
@@ -270,64 +283,82 @@ clientkeys = gears.table.join(table.unpack(keys.client))
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, 9 do
-    globalkeys = gears.table.join(globalkeys,
+    globalkeys = gears.table.join(
+        globalkeys,
         -- View tag only.
-        awful.key({ modkey }, "#" .. i + 9,
-                  function ()
-                        local screen = awful.screen.focused()
-                        local tag = screen.tags[i]
-                        if tag then
-                           tag:view_only()
-                        end
-                  end,
-                  {description = "view tag #"..i, group = "tag"}),
+        awful.key(
+            {modkey}, "#" .. i + 9,
+            function ()
+                local screen = awful.screen.focused()
+                local tag = screen.tags[i]
+                if tag then
+                    tag:view_only()
+                end
+            end,
+            {description = "view tag #"..i, group = "tag"}
+        ),
         -- Toggle tag display.
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = awful.screen.focused()
-                      local tag = screen.tags[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end,
-                  {description = "toggle tag #" .. i, group = "tag"}),
+        awful.key(
+            {modkey, "Control"}, "#" .. i + 9,
+            function ()
+                local screen = awful.screen.focused()
+                local tag = screen.tags[i]
+                if tag then
+                    awful.tag.viewtoggle(tag)
+                end
+            end,
+            {description = "toggle tag #" .. i, group = "tag"}
+        ),
         -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:move_to_tag(tag)
-                          end
-                     end
-                  end,
-                  {description = "move focused client to tag #"..i, group = "tag"}),
+        awful.key(
+            {modkey, "Shift"}, "#" .. i + 9,
+            function ()
+                if client.focus then
+                    local tag = client.focus.screen.tags[i]
+                    if tag then
+                        client.focus:move_to_tag(tag)
+                    end
+                end
+            end,
+            {description = "move focused client to tag #"..i, group = "tag"}
+        ),
         -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:toggle_tag(tag)
-                          end
-                      end
-                  end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+        awful.key(
+            {modkey, "Control", "Shift" }, "#" .. i + 9,
+            function ()
+                if client.focus then
+                    local tag = client.focus.screen.tags[i]
+                    if tag then
+                        client.focus:toggle_tag(tag)
+                    end
+                end
+            end,
+            {description = "toggle focused client on tag #" .. i, group = "tag"}
+        )
     )
 end
 
 clientbuttons = gears.table.join(
-    awful.button({ }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-    end),
-    awful.button({ modkey }, 1, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.move(c)
-    end),
-    awful.button({ modkey }, 3, function (c)
-        c:emit_signal("request::activate", "mouse_click", {raise = true})
-        awful.mouse.client.resize(c)
-    end)
+    awful.button(
+        {}, 1,
+        function (c)
+            c:emit_signal("request::activate", "mouse_click", {raise = true})
+        end
+    ),
+    awful.button(
+        {modkey}, 1,
+        function (c)
+            c:emit_signal("request::activate", "mouse_click", {raise = true})
+            awful.mouse.client.move(c)
+        end
+    ),
+    awful.button(
+        {modkey}, 3,
+        function (c)
+            c:emit_signal("request::activate", "mouse_click", {raise = true})
+            awful.mouse.client.resize(c)
+        end
+    )
 )
 
 -- Set keys
@@ -338,52 +369,60 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
-     }
+    {
+        rule = {},
+        properties = {
+            border_width = beautiful.border_width,
+            border_color = beautiful.border_normal,
+            focus = awful.client.focus.filter,
+            raise = true,
+            keys = clientkeys,
+            buttons = clientbuttons,
+            screen = awful.screen.preferred,
+            placement = awful.placement.no_overlap+awful.placement.no_offscreen
+        }
     },
 
     -- Floating clients.
-    { rule_any = {
-        instance = {
-          "DTA",  -- Firefox addon DownThemAll.
-          "copyq",  -- Includes session name in class.
-          "pinentry",
+    {
+        rule_any = {
+            instance = {
+            "DTA",  -- Firefox addon DownThemAll.
+            "copyq",  -- Includes session name in class.
+            "pinentry",
+            },
+            class = {
+                "Arandr",
+                "Blueman-manager",
+                "Gpick",
+                "Kruler",
+                "MessageWin",  -- kalarm.
+                "Sxiv",
+                "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
+                "Wpa_gui",
+                "veromix",
+                "xtightvncviewer"
+            },
+            -- Note that the name property shown in xprop might be set slightly after creation of the client
+            -- and the name shown there might not match defined rules here.
+            name = {
+                "Event Tester",  -- xev.
+            },
+            role = {
+                "AlarmWindow",  -- Thunderbird's calendar.
+                "ConfigManager",  -- Thunderbird's about:config.
+                "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+            }
         },
-        class = {
-          "Arandr",
-          "Blueman-manager",
-          "Gpick",
-          "Kruler",
-          "MessageWin",  -- kalarm.
-          "Sxiv",
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-          "Wpa_gui",
-          "veromix",
-          "xtightvncviewer"},
-
-        -- Note that the name property shown in xprop might be set slightly after creation of the client
-        -- and the name shown there might not match defined rules here.
-        name = {
-          "Event Tester",  -- xev.
-        },
-        role = {
-          "AlarmWindow",  -- Thunderbird's calendar.
-          "ConfigManager",  -- Thunderbird's about:config.
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-        }
-      }, properties = { floating = true }},
+        properties = {floating = true}
+    },
 
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+    {
+        rule_any = {
+            type = {"normal", "dialog"}
+        },
+        properties = {titlebars_enabled = true}
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
