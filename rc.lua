@@ -251,7 +251,7 @@ awful.screen.connect_for_each_screen(function(s)
             volumebar(
                 {
                     main_color = '#af13f7',
-                    mute_color = '#ff0000',
+                    mute_color = '#7f7f7f7f',
                     bg_color = "#c1c7c97f",
                     width = 100,
                     shape = 'rounded_bar',
