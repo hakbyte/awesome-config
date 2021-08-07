@@ -250,11 +250,11 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             volumebar(
                 {
-                    main_color = '#af13f7',
-                    mute_color = '#7f7f7f7f',
+                    main_color = "#af13f7",
+                    mute_color = "#7f7f7f7f",
                     bg_color = "#c1c7c97f",
                     width = 100,
-                    shape = 'rounded_bar',
+                    shape = "rounded_bar",
                     margins = 15,
                 }
             ),
