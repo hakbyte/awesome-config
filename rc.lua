@@ -17,7 +17,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-local keys = require("keybinding")
+local keys = require("keys")
 local volumebar = require("widget.volumebar")
 
 -- {{{ Error handling
