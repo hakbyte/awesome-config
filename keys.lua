@@ -27,7 +27,7 @@ keys.global = gears.table.join({
         {description = "go back", group = "tag"}
     ),
     awful.key(
-        { mod}, "j",
+        {mod}, "j",
         function ()
             awful.client.focus.byidx(1)
         end,
@@ -106,8 +106,11 @@ keys.global = gears.table.join({
         awesome.restart,
         {description = "reload awesome", group = "awesome"}
     ),
-    awful.key({ mod, "Shift"   }, "q", awesome.quit,
-    {description = "quit awesome", group = "awesome"}),
+    awful.key(
+        {mod, "Shift"}, "q",
+        awesome.quit,
+        {description = "quit awesome", group = "awesome"}
+    ),
 
     -- Layout manipulation
     awful.key(
