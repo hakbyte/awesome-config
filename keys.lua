@@ -41,7 +41,7 @@ keys.global = gears.table.join({
         {description = "focus previous by index", group = "client"}
     ),
     awful.key(
-        {mod}, "w",
+        {mod, "Shift"}, "w",
         function ()
             mymainmenu:show()
         end,
