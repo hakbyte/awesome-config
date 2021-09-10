@@ -74,9 +74,10 @@ theme.menu_width        = dpi(140)
 -- Wibar
 --
 
-theme.wibar_height  = dpi(35)
-theme.wibar_margin  = dpi(10)
-theme.wibar_spacing = dpi(10)
+theme.wibar_height      = dpi(35)
+theme.wibar_margin      = dpi(10)
+theme.wibar_spacing     = dpi(10)
+theme.systray_icon_size = dpi(28)
 
 --
 -- Widgets
