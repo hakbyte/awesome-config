@@ -6,6 +6,7 @@ local beautiful = require("beautiful")
 -- Widget and layout library
 local wibox = require("wibox")
 
+-- Widgets
 local volumebar = require("widget.volumebar")
 
 -- Create a textclock widget
