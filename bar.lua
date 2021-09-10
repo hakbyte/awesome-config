@@ -146,8 +146,8 @@ awful.screen.connect_for_each_screen(
         s.mywibox = awful.wibar(
             {
                 position = "top",
-                screen = s,
-                height = 35,
+                screen   = s,
+                height   = beautiful.wibar_height,
             }
         )
 
@@ -172,16 +172,14 @@ awful.screen.connect_for_each_screen(
                     layout = wibox.layout.fixed.horizontal,
                     spacing = beautiful.wibar_spacing,
                     wibox.widget.systray(),
-                    volumebar(
-                        {
-                            main_color = "#af13f7",
-                            mute_color = "#7f7f7f7f",
-                            bg_color = "#c1c7c97f",
-                            width = 100,
-                            shape = "rounded_bar",
-                            margins = 15,
-                        }
-                    ),
+                    volumebar({
+                        main_color = "#af13f7",
+                        mute_color = "#7f7f7f7f",
+                        bg_color   = "#c1c7c97f",
+                        width      = beautiful.widget_volumebar_width,
+                        shape      = "rounded_bar",
+                        margins    = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
+                    }),
                     mytextclock,
                     s.mylayoutbox,
                 },
