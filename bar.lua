@@ -1,12 +1,12 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+local beautiful = require("beautiful")
 
 -- Widget and layout library
 local wibox = require("wibox")
 
 local volumebar = require("widget.volumebar")
-local beautiful = require("beautiful")
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
