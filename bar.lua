@@ -91,6 +91,19 @@ local tasklist_buttons = gears.table.join(
     )
 )
 
+-- Create systray widget
+local mysystray = wibox.widget.systray()
+mysystray:set_base_size(beautiful.systray_icon_size)
+
+local systray_margin = (beautiful.wibar_height-beautiful.systray_icon_size)/2
+
+local systray_container = {
+    mysystray,
+    top = systray_margin,
+    bottom = systray_margin,
+    widget = wibox.container.margin
+}
+
 awful.screen.connect_for_each_screen(
     function(s)
         -- Each screen has its own tag table.
@@ -169,7 +182,7 @@ awful.screen.connect_for_each_screen(
                     -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
                     spacing = beautiful.wibar_spacing,
-                    wibox.widget.systray(),
+                    systray_container,
                     volumebar({
                         main_color = "#af13f7",
                         mute_color = "#7f7f7f7f",
