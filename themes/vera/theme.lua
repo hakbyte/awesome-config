@@ -71,6 +71,14 @@ theme.menu_border_width = dpi(0)
 theme.menu_width        = dpi(140)
 
 --
+-- Wibar
+--
+
+theme.wibar_height  = dpi(35)
+theme.wibar_margin  = dpi(10)
+theme.wibar_spacing = dpi(25)
+
+--
 -- Titlebar buttons
 --
 
