@@ -93,11 +93,6 @@ mymainmenu = awful.menu({
     }
 })
 
-mylauncher = awful.widget.launcher({
-    image = beautiful.awesome_icon,
-    menu = mymainmenu
-})
-
 require("bar")
 
 -- {{{ Mouse bindings
