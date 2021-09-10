@@ -154,28 +154,39 @@ awful.screen.connect_for_each_screen(
         -- Add widgets to the wibox
         s.mywibox:setup {
             layout = wibox.layout.align.horizontal,
-            { -- Left widgets
-                layout = wibox.layout.fixed.horizontal,
-                mylauncher,
-                s.mytaglist,
-                s.mypromptbox,
+            {
+                {
+                    -- Left widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    mylauncher,
+                    s.mytaglist,
+                    s.mypromptbox,
+                },
+                left = beautiful.wibar_margin,
+                widget = wibox.container.margin,
             },
             s.mytasklist, -- Middle widget
-            { -- Right widgets
-                layout = wibox.layout.fixed.horizontal,
-                wibox.widget.systray(),
-                volumebar(
-                    {
-                        main_color = "#af13f7",
-                        mute_color = "#7f7f7f7f",
-                        bg_color = "#c1c7c97f",
-                        width = 100,
-                        shape = "rounded_bar",
-                        margins = 15,
-                    }
-                ),
-                mytextclock,
-                s.mylayoutbox,
+            {
+                {
+                    -- Right widgets
+                    layout = wibox.layout.fixed.horizontal,
+                    spacing = beautiful.wibar_spacing,
+                    wibox.widget.systray(),
+                    volumebar(
+                        {
+                            main_color = "#af13f7",
+                            mute_color = "#7f7f7f7f",
+                            bg_color = "#c1c7c97f",
+                            width = 100,
+                            shape = "rounded_bar",
+                            margins = 15,
+                        }
+                    ),
+                    mytextclock,
+                    s.mylayoutbox,
+                },
+                right = beautiful.wibar_margin,
+                widget = wibox.container.margin,
             },
         }
     end
