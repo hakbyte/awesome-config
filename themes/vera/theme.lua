@@ -79,6 +79,13 @@ theme.wibar_margin  = dpi(10)
 theme.wibar_spacing = dpi(25)
 
 --
+-- Widgets
+--
+
+theme.widget_volumebar_height = 7
+theme.widget_volumebar_width  = 80
+
+--
 -- Titlebar buttons
 --
 
