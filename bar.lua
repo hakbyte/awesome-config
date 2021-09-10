@@ -8,8 +8,6 @@ local wibox = require("wibox")
 local volumebar = require("widget.volumebar")
 local beautiful = require("beautiful")
 
---beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/vera/theme.lua")
-
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
