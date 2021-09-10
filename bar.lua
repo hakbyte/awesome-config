@@ -73,7 +73,9 @@ local tasklist_buttons = gears.table.join(
     awful.button(
         {}, 3,
         function()
-            awful.menu.client_list({ theme = { width = 250 } })
+            awful.menu.client_list({
+                theme = {width = 250}
+            })
         end
     ),
     awful.button(
@@ -143,13 +145,11 @@ awful.screen.connect_for_each_screen(
         }
 
         -- Create the wibox
-        s.mywibox = awful.wibar(
-            {
-                position = "top",
-                screen   = s,
-                height   = beautiful.wibar_height,
-            }
-        )
+        s.mywibox = awful.wibar({
+            position = "top",
+            screen   = s,
+            height   = beautiful.wibar_height
+        })
 
         -- Add widgets to the wibox
         s.mywibox:setup {
@@ -160,10 +160,10 @@ awful.screen.connect_for_each_screen(
                     layout = wibox.layout.fixed.horizontal,
                     --mylauncher,
                     s.mytaglist,
-                    s.mypromptbox,
+                    s.mypromptbox
                 },
                 left = beautiful.wibar_margin,
-                widget = wibox.container.margin,
+                widget = wibox.container.margin
             },
             s.mytasklist, -- Middle widget
             {
@@ -181,11 +181,11 @@ awful.screen.connect_for_each_screen(
                         margins    = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
                     }),
                     mytextclock,
-                    s.mylayoutbox,
+                    s.mylayoutbox
                 },
                 right = beautiful.wibar_margin,
-                widget = wibox.container.margin,
-            },
+                widget = wibox.container.margin
+            }
         }
     end
 )
