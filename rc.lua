@@ -317,9 +317,19 @@ client.connect_signal(
             },
             {
                 {
-                    { -- Left
-                        layout  = wibox.layout.fixed.horizontal,
-                        buttons = buttons
+                    { -- Right
+                        {
+                            awful.titlebar.widget.closebutton(c),
+                            awful.titlebar.widget.ontopbutton(c),
+                            awful.titlebar.widget.maximizedbutton(c),
+                            layout = wibox.layout.fixed.horizontal(),
+                            spacing = 7
+                        },
+                        widget = wibox.container.margin,
+                        top = 12,
+                        bottom = 11,
+                        right = 0,
+                        left = 0
                     },
                     { -- Middle
                         {
@@ -329,19 +339,9 @@ client.connect_signal(
                         layout  = wibox.layout.flex.horizontal,
                         buttons = buttons
                     },
-                    { -- Right
-                        {
-                            awful.titlebar.widget.maximizedbutton(c),
-                            awful.titlebar.widget.ontopbutton(c) ,
-                            awful.titlebar.widget.closebutton    (c),
-                            layout = wibox.layout.fixed.horizontal(),
-                            spacing = 7
-                        },
-                        widget = wibox.container.margin,
-                        top = 12,
-                        bottom = 11,
-                        right = 0,
-                        left = 0
+                    { -- Left
+                        layout  = wibox.layout.fixed.horizontal,
+                        buttons = buttons
                     },
                     layout = wibox.layout.align.horizontal,
                     expand = "inside"
