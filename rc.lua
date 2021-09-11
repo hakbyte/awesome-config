@@ -317,7 +317,7 @@ client.connect_signal(
             },
             {
                 {
-                    { -- Right
+                    { -- Left
                         {
                             awful.titlebar.widget.closebutton(c),
                             awful.titlebar.widget.ontopbutton(c),
@@ -339,7 +339,7 @@ client.connect_signal(
                         layout  = wibox.layout.flex.horizontal,
                         buttons = buttons
                     },
-                    { -- Left
+                    { -- Right
                         layout  = wibox.layout.fixed.horizontal,
                         buttons = buttons
                     },
