@@ -83,7 +83,7 @@ myawesomemenu = {
     {"Manual", terminal .. " -e man awesome" },
     {"Edit Config", editor_cmd .. " " .. awesome.conffile},
     {"Restart", awesome.restart},
-    {"Quit", function() awesome.uit() end },
+    {"Quit", function() awesome.uit() end},
 }
 
 mymainmenu = awful.menu({
@@ -336,11 +336,11 @@ client.connect_signal(
                             align = "center",
                             widget = awful.titlebar.widget.titlewidget(c)
                         },
-                        layout  = wibox.layout.flex.horizontal,
+                        layout = wibox.layout.flex.horizontal,
                         buttons = buttons
                     },
                     { -- Right
-                        layout  = wibox.layout.fixed.horizontal,
+                        layout = wibox.layout.fixed.horizontal,
                         buttons = buttons
                     },
                     layout = wibox.layout.align.horizontal,
