@@ -38,8 +38,8 @@ theme.fg_normal      = "#252525"
 theme.fg_focus       = "#000000"
 
 theme.border_width   = dpi(3)
-theme.border_focus   = "#6c6cb3"
-theme.border_normal  = "#a3a3e6"
+theme.border_focus   = "#f5f6fa"
+theme.border_normal  = "#f5f6fa"
 theme.border_marked  = "#91231c"
 
 theme.separator      = "#dadbde"
