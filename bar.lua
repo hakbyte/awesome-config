@@ -182,7 +182,6 @@ awful.screen.connect_for_each_screen(
                     -- Right widgets
                     layout = wibox.layout.fixed.horizontal,
                     spacing = beautiful.wibar_spacing,
-                    systray_container,
                     volumebar({
                         main_color = "#af13f7",
                         mute_color = "#7f7f7f7f",
@@ -192,6 +191,7 @@ awful.screen.connect_for_each_screen(
                         margins    = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
                     }),
                     mytextclock,
+                    systray_container,
                     s.mylayoutbox
                 },
                 right = beautiful.wibar_margin,
