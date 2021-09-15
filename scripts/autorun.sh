@@ -7,19 +7,23 @@ function run {
   fi
 }
 
-# Load previously configured wallpaper
+#
+# Apps & configuration scripts to automatically run:
+#
+
+# Previously configured wallpaper
 run nitrogen --restore
 
-# Enable compositor effects
+# Compositor effects
 run picom --config ~/.config/awesome/conf/picom.cfg
 
-# Network manager tray icon
+# Network manager (tray icon)
 run nm-applet
 
-# Start power management
+# Power management
 run xfce4-power-manager
 
-# Start screen locker
+# Screen locker
 run xss-lock ~/.config/awesome/scripts/sleep-lock.sh
 
 # Screenshot utility (tray icon)
