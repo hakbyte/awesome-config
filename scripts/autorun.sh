@@ -21,3 +21,6 @@ run xfce4-power-manager
 
 # Start screen locker
 run xss-lock ~/.config/awesome/scripts/sleep-lock.sh
+
+# Screenshot utility (tray icon)
+run flameshot
