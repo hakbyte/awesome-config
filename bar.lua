@@ -107,7 +107,7 @@ local systray_container = {
 awful.screen.connect_for_each_screen(
     function(s)
         -- Each screen has its own tag table.
-        awful.tag({ "1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
+        awful.tag({"1", "2", "3", "4", "5"}, s, awful.layout.layouts[1])
 
         -- Create a promptbox for each screen
         s.mypromptbox = awful.widget.prompt()
@@ -144,23 +144,23 @@ awful.screen.connect_for_each_screen(
         )
         -- Create a taglist widget
         s.mytaglist = awful.widget.taglist {
-            screen  = s,
-            filter  = awful.widget.taglist.filter.all,
+            screen = s,
+            filter = awful.widget.taglist.filter.all,
             buttons = taglist_buttons
         }
 
         -- Create a tasklist widget
         s.mytasklist = awful.widget.tasklist {
-            screen  = s,
-            filter  = awful.widget.tasklist.filter.currenttags,
+            screen = s,
+            filter = awful.widget.tasklist.filter.currenttags,
             buttons = tasklist_buttons
         }
 
         -- Create the wibox
         s.mywibox = awful.wibar({
             position = "top",
-            screen   = s,
-            height   = beautiful.wibar_height
+            screen = s,
+            height = beautiful.wibar_height
         })
 
         -- Add widgets to the wibox
@@ -185,10 +185,10 @@ awful.screen.connect_for_each_screen(
                     volumebar({
                         main_color = "#af13f7",
                         mute_color = "#7f7f7f7f",
-                        bg_color   = "#c1c7c97f",
-                        width      = beautiful.widget_volumebar_width,
-                        shape      = "rounded_bar",
-                        margins    = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
+                        bg_color = "#c1c7c97f",
+                        width = beautiful.widget_volumebar_width,
+                        shape = "rounded_bar",
+                        margins = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
                     }),
                     mytextclock,
                     systray_container,
