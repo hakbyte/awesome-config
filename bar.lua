@@ -132,7 +132,13 @@ awful.screen.connect_for_each_screen(
                 left = beautiful.wibar_margin,
                 widget = wibox.container.margin
             },
-            nil, -- Middle widget
+            {
+                { -- Middle
+                    align = "center",
+                    widget = mytextclock,
+                },
+                layout  = wibox.layout.flex.horizontal
+            },
             {
                 {
                     -- Right widgets
@@ -146,7 +152,6 @@ awful.screen.connect_for_each_screen(
                         shape = "rounded_bar",
                         margins = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
                     }),
-                    mytextclock,
                     systray_container,
                     s.mylayoutbox
                 },
