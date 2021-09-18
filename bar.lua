@@ -10,7 +10,7 @@ local wibox = require("wibox")
 local volumebar = require("widget.volumebar")
 
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%A, %d %B ∙ %H:%M")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
