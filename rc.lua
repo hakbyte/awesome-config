@@ -337,11 +337,11 @@ client.connect_signal(
                             align = "center",
                             widget = awful.titlebar.widget.titlewidget(c)
                         },
-                        layout = wibox.layout.flex.horizontal,
+                        layout  = wibox.layout.flex.horizontal,
                         buttons = buttons
                     },
                     { -- Right
-                        layout = wibox.layout.fixed.horizontal,
+                        layout  = wibox.layout.fixed.horizontal,
                         buttons = buttons
                     },
                     layout = wibox.layout.align.horizontal,

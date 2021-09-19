@@ -200,6 +200,15 @@ keys.global = gears.table.join({
         {description = "run rofi launcher", group = "launcher"}
     ),
 
+    -- Screenshot utilty
+    awful.key(
+        {}, "Print",
+        function ()
+            awful.spawn.with_shell("flameshot gui")
+        end,
+        {description = "Flameshot (screenshot utility)", group = "launcher"}
+    ),
+
     -- Volume controls
     awful.key(
         {}, "XF86AudioRaiseVolume",
