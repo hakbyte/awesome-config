@@ -122,6 +122,7 @@ awful.screen.connect_for_each_screen(
         -- Add widgets to the wibox
         s.mywibox:setup {
             layout = wibox.layout.align.horizontal,
+            expand = "none",
             {
                 {
                     -- Left widgets
@@ -132,13 +133,7 @@ awful.screen.connect_for_each_screen(
                 left = beautiful.wibar_margin,
                 widget = wibox.container.margin
             },
-            {
-                { -- Middle
-                    align = "center",
-                    widget = mytextclock,
-                },
-                layout  = wibox.layout.flex.horizontal
-            },
+            mytextclock, -- Middle widget
             {
                 {
                     -- Right widgets
