@@ -77,6 +77,11 @@ awful.layout.layouts = {
 }
 -- }}}
 
+-- Enable sloppy focus, so that focus follows mouse.
+client.connect_signal("mouse::enter", function(c)
+    c:emit_signal("request::activate", "mouse_enter", {raise = false})
+end)
+
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
