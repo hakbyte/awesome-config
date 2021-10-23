@@ -47,16 +47,7 @@ theme.border_marked = theme.nord11
 theme.tasklist_bg_focus        = theme.nord0
 theme.tasklist_icon_size       = dpi(5)
 theme.tasklist_plain_task_name = true
-theme.taglist_spacing          = dpi(5)
-
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
+theme.taglist_spacing          = dpi(10)
 
 --
 -- Awesome menu
