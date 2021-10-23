@@ -69,11 +69,11 @@ theme.awesome_icon = theme_assets.awesome_icon(
 
 theme.icon_theme = nil
 
-theme.taglist_text_font     = "JetBrains Mono 18"
-theme.taglist_text_empty    = {"", "", "", "", "", "", "", "", ""}
-theme.taglist_text_occupied = {"", "", "", "", "", "", "", "", ""}
-theme.taglist_text_focused  = {"", "", "", "", "", "", "", "", ""}
-theme.taglist_text_urgent   = {"", "", "", "", "", "", "", "", ""}
+theme.taglist_text_font     = "SF Pro Text Semibold 18"
+theme.taglist_text_empty    = {"󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦"}
+theme.taglist_text_occupied = {"󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚"}
+theme.taglist_text_focused  = {"󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯"}
+theme.taglist_text_urgent   = {"󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪"}
 
 -- theme.taglist_font = "Roboto 12"
 theme.taglist_bg_focus    = theme.bg_normal
