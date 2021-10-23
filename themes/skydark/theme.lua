@@ -1,12 +1,17 @@
+--
+-- Skydark theme
+--
+
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
-
-local gfs = require("gears.filesystem")
 local theme_path = "~/.config/awesome/themes/skydark/"
-
 local theme = {}
---local wibar = require("wibar")
+
+--
+-- Colors
+--
+
 theme.nord0  = "#2E3440"
 theme.nord1  = "#3B4252"
 theme.nord2  = "#434C5E"
@@ -24,25 +29,32 @@ theme.nord13 = "#EBCB8B"
 theme.nord14 = "#A3BE8C"
 theme.nord15 = "#B48EAD"
 
-theme.font          = "SF Pro Text Semibold 11"
-theme.transparent   = "#00000000"
+--
+-- Global theme settings
+--
 
-theme.bg_normal     = theme.nord0
-theme.bg_focus      = theme.bg_normal
-theme.bg_urgent     = theme.bg_normal
-theme.bg_minimize   = theme.bg_normal
-theme.bg_systray    = theme.bg_normal
+theme.icon_theme               = nil
+theme.font                     = "SF Pro Text Semibold 11"
+theme.transparent              = "#00000000"
+theme.wallpaper                = theme_path .. "wallpaper.jpg"
+theme.background               = theme.nord0
 
-theme.fg_normal     = theme.nord4
-theme.fg_focus      = theme.fg_normal
-theme.fg_urgent     = theme.fg_normal
-theme.fg_minimize   = theme.fg_normal
+theme.bg_normal                = theme.nord0
+theme.bg_focus                 = theme.bg_normal
+theme.bg_urgent                = theme.bg_normal
+theme.bg_minimize              = theme.bg_normal
+theme.bg_systray               = theme.bg_normal
 
-theme.useless_gap   = dpi(6)
-theme.border_width  = dpi(3)
-theme.border_focus  = theme.bg_normal
-theme.border_normal = theme.bg_normal
-theme.border_marked = theme.nord11
+theme.fg_normal                = theme.nord4
+theme.fg_focus                 = theme.fg_normal
+theme.fg_urgent                = theme.fg_normal
+theme.fg_minimize              = theme.fg_normal
+
+theme.useless_gap              = dpi(6)
+theme.border_width             = dpi(3)
+theme.border_focus             = theme.bg_normal
+theme.border_normal            = theme.bg_normal
+theme.border_marked            = theme.nord11
 
 theme.tasklist_bg_focus        = theme.nord0
 theme.tasklist_icon_size       = dpi(5)
@@ -53,37 +65,38 @@ theme.taglist_spacing          = dpi(10)
 -- Awesome menu
 --
 
-theme.menu_submenu_icon = theme_path .. "submenu.png"
-theme.menu_height       = dpi(24)
 theme.menu_font         = "SF Pro Text Regular 12"
+theme.menu_submenu_icon = theme_path .. "submenu.png"
 theme.menu_border_width = dpi(0)
+theme.menu_height       = dpi(24)
 theme.menu_width        = dpi(140)
 
-theme.wallpaper   = theme_path .. "wallpaper.jpg"
-theme.background  = theme.nord0
 
--- Generate Awesome icon:
+--
+-- Awesome icon
+--
+
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
-theme.icon_theme = nil
+--
+-- Tasklist
+--
 
 theme.taglist_text_font     = "SF Pro Text Semibold 18"
 theme.taglist_text_empty    = {"󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦", "󰝦"}
 theme.taglist_text_occupied = {"󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚", "󰀚"}
 theme.taglist_text_focused  = {"󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯", "󰄯"}
 theme.taglist_text_urgent   = {"󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪", "󰁪"}
-
--- theme.taglist_font = "Roboto 12"
-theme.taglist_bg_focus    = theme.bg_normal
-theme.taglist_fg_focus    = theme.nord13
-theme.taglist_bg_occupied = theme.bg_normal
-theme.taglist_fg_occupied = theme.nord14
-theme.taglist_bg_empty    = theme.bg_normal
-theme.taglist_fg_empty    = theme.nord9
-theme.taglist_bg_urgent   = theme.bg_normal
-theme.taglist_fg_urgent   = theme.nord11
+theme.taglist_bg_focus      = theme.bg_normal
+theme.taglist_fg_focus      = theme.nord13
+theme.taglist_bg_occupied   = theme.bg_normal
+theme.taglist_fg_occupied   = theme.nord14
+theme.taglist_bg_empty      = theme.bg_normal
+theme.taglist_fg_empty      = theme.nord9
+theme.taglist_bg_urgent     = theme.bg_normal
+theme.taglist_fg_urgent     = theme.nord11
 
 --
 -- Wibar
