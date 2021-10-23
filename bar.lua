@@ -2,6 +2,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
+local helpers = require("helpers")
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -107,8 +108,21 @@ awful.screen.connect_for_each_screen(
         )
         -- Create a taglist widget
         s.mytaglist = awful.widget.taglist {
-            screen = s,
-            filter = awful.widget.taglist.filter.all,
+            screen  = s,
+            filter  = awful.widget.taglist.filter.all,
+            widget_template = {
+              widget = wibox.widget.textbox,
+              create_callback = function(self, tag, index, _)
+                self.align = "left"
+                self.valign = "center"
+                self.font = beautiful.taglist_text_font
+
+                helpers.update_taglist(self, tag, index)
+              end,
+              update_callback = function(self, tag, index, _)
+                helpers.update_taglist(self, tag, index)
+              end,
+            },
             buttons = taglist_buttons
         }
 
