@@ -156,7 +156,6 @@ awful.screen.connect_for_each_screen(
                     volumebar({
                         main_color = "#af13f7",
                         mute_color = "#7f7f7f7f",
-                        bg_color = "#c1c7c97f",
                         width = beautiful.widget_volumebar_width,
                         shape = "rounded_bar",
                         margins = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
