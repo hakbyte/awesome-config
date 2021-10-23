@@ -493,4 +493,18 @@ function helpers.update_taglist(item, tag, index)
     end
 end
 
+
+function helpers.set_wallpaper(s)
+    -- Wallpaper
+    if beautiful.wallpaper then
+      local wallpaper =  beautiful.wallpaper
+	local background = beautiful.background
+        -- If wallpaper is a function, call it with the screen
+        if type(wallpaper) == "function" then
+            wallpaper = wallpaper(s)
+        end
+        gears.wallpaper.maximized(wallpaper, s)
+    end
+end
+
 return helpers
