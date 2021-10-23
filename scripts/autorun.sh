@@ -11,9 +11,6 @@ function run {
 # Apps & configuration scripts to automatically run:
 #
 
-# Previously configured wallpaper
-run nitrogen --restore
-
 # Compositor effects
 run picom --config ~/.config/awesome/conf/picom.cfg
 
