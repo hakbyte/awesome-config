@@ -8,7 +8,7 @@ function run {
 }
 
 #
-# Apps & configuration scripts to automatically run:
+# Apps & configuration scripts
 #
 
 # Compositor effects
