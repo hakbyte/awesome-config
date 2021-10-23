@@ -59,12 +59,12 @@ local taglist_buttons = gears.table.join(
 local mysystray = wibox.widget.systray()
 mysystray:set_base_size(beautiful.systray_icon_size)
 
-local systray_margin = (beautiful.wibar_height-beautiful.systray_icon_size)/2
+local icon_margin = (beautiful.wibar_height-beautiful.systray_icon_size)/2
 
 local systray_container = {
     mysystray,
-    top = systray_margin,
-    bottom = systray_margin,
+    top = icon_margin,
+    bottom = icon_margin,
     widget = wibox.container.margin
 }
 
@@ -135,8 +135,8 @@ awful.screen.connect_for_each_screen(
 
         local layout_container = {
             s.mylayoutbox,
-            top = systray_margin,
-            bottom = systray_margin,
+            top = icon_margin,
+            bottom = icon_margin,
             widget = wibox.container.margin
         }
 
