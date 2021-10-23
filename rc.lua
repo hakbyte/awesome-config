@@ -312,7 +312,8 @@ client.connect_signal(
                 end
             )
         )
-        local args = { size = 40 }
+
+        local args = { size = 38 }
 
         awful.titlebar(c, args) : setup
         {
@@ -357,7 +358,7 @@ client.connect_signal(
                 bottom = 0,
                 right = 12,
                 left = 12,
-                forced_height = 38
+                forced_height = args.size
             },
             {
                 widget = wibox.widget.separator,
