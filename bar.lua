@@ -133,6 +133,13 @@ awful.screen.connect_for_each_screen(
             height = beautiful.wibar_height
         })
 
+        local layout_container = {
+            s.mylayoutbox,
+            top = systray_margin,
+            bottom = systray_margin,
+            widget = wibox.container.margin
+        }
+
         -- Add widgets to the wibox
         s.mywibox:setup {
             layout = wibox.layout.align.horizontal,
@@ -161,7 +168,7 @@ awful.screen.connect_for_each_screen(
                         margins = (beautiful.wibar_height-beautiful.widget_volumebar_height)/2,
                     }),
                     systray_container,
-                    s.mylayoutbox
+                    layout_container
                 },
                 right = beautiful.wibar_margin,
                 widget = wibox.container.margin
