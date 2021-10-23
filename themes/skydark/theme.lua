@@ -24,7 +24,7 @@ theme.nord13 = "#EBCB8B"
 theme.nord14 = "#A3BE8C"
 theme.nord15 = "#B48EAD"
 
-theme.font          = "Roboto 12"
+theme.font          = "SF Pro Text Semibold 11"
 theme.transparent   = "#00000000"
 
 theme.bg_normal     = theme.nord0
