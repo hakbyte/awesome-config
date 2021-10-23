@@ -58,9 +58,15 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
 
+--
+-- Awesome menu
+--
+
 theme.menu_submenu_icon = theme_path .. "submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
+theme.menu_height       = dpi(24)
+theme.menu_font         = "SF Pro Text Regular 12"
+theme.menu_border_width = dpi(0)
+theme.menu_width        = dpi(140)
 
 theme.wallpaper   = theme_path .. "wallpaper.jpg"
 theme.background  = theme.nord0
