@@ -7,7 +7,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
-local theme_path = "~/.config/awesome/themes/nord/"
+local theme_path = "~/.config/awesome/themes/skydark/"
 
 local theme = {}
 --local wibar = require("wibar")
@@ -43,8 +43,9 @@ theme.fg_urgent     = theme.fg_normal
 theme.fg_minimize   = theme.fg_normal
 
 theme.useless_gap   = dpi(15)
-theme.border_width  = dpi(0)
-theme.border_normal = theme.nord9
+theme.border_width  = dpi(3)
+theme.border_focus   = theme.bg_normal
+theme.border_normal = theme.bg_normal
 theme.border_marked = theme.nord11
 
 theme.tasklist_bg_focus = theme.nord0
@@ -82,11 +83,11 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon = theme_path.."../defaults/submenu.png"
+theme.menu_submenu_icon = theme_path .. "submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
 
-theme.wallpaper   = theme_path.."wallpaper.jpg"
+theme.wallpaper   = theme_path .. "wallpaper.jpg"
 theme.background  = theme.nord0
 
 -- Generate Awesome icon:
