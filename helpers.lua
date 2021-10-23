@@ -480,4 +480,17 @@ function helpers.copy(orig, copies)
     return copy
 end
 
+-- Helper function that updates a taglist item
+function helpers.update_taglist(item, tag, index)
+    if tag.selected then
+        item.markup = helpers.colorize_text(beautiful.taglist_text_focused[index], beautiful.taglist_fg_focus)
+    elseif tag.urgent then
+        item.markup = helpers.colorize_text(beautiful.taglist_text_urgent[index], beautiful.taglist_fg_urgent)
+    elseif #tag:clients() > 0 then
+        item.markup = helpers.colorize_text(beautiful.taglist_text_occupied[index], beautiful.taglist_fg_occupied)
+    else
+        item.markup = helpers.colorize_text(beautiful.taglist_text_empty[index], beautiful.taglist_fg_empty)
+    end
+end
+
 return helpers
