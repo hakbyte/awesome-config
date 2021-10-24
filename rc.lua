@@ -19,7 +19,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
 local keys = require("keys")
-local helpers = require("helpers")
+local helper = require("helper")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -58,7 +58,7 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/skydark/theme.lua")
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", helpers.set_wallpaper)
+screen.connect_signal("property::geometry", helper.set_wallpaper)
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"

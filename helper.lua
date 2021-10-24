@@ -9,31 +9,31 @@ local wibox = require("wibox")
 
 local naughty = require("naughty")
 
-local helpers = {}
+local helper = {}
 
 -- Create rounded rectangle shape (in one line)
-helpers.rrect = function(radius)
+helper.rrect = function(radius)
     return function(cr, width, height)
         gears.shape.rounded_rect(cr, width, height, radius)
     end
 end
 
-helpers.file_exists = function(name)
+helper.file_exists = function(name)
    local f = io.open(name,"r")
    if f ~= nil then io.close(f) return true else return false end
 end
 
-helpers.prrect = function(radius, tl, tr, br, bl)
+helper.prrect = function(radius, tl, tr, br, bl)
     return function(cr, width, height)
         gears.shape.partially_rounded_rect(cr, width, height, tl, tr, br, bl, radius)
     end
 end
 
-function helpers.colorize_text(txt, fg)
+function helper.colorize_text(txt, fg)
     return "<span foreground='" .. fg .."'>" .. txt .. "</span>"
 end
 
-function helpers.client_menu_toggle()
+function helper.client_menu_toggle()
     local instance = nil
 
     return function ()
@@ -46,7 +46,7 @@ function helpers.client_menu_toggle()
     end
 end
 
-function helpers.pad(size)
+function helper.pad(size)
     local str = ""
     for i = 1, size do
         str = str .. " "
@@ -55,7 +55,7 @@ function helpers.pad(size)
     return pad
 end
 
-function helpers.move_to_edge(c, direction)
+function helper.move_to_edge(c, direction)
     -- local workarea = awful.screen.focused().workarea
     -- local client_geometry = c:geometry()
     if direction == "up" then
@@ -82,7 +82,7 @@ function helpers.move_to_edge(c, direction)
 end
 
 local double_tap_timer = nil
-function helpers.single_double_tap(single_tap_function, double_tap_function)
+function helper.single_double_tap(single_tap_function, double_tap_function)
     if double_tap_timer then
         double_tap_timer:stop()
         double_tap_timer = nil
@@ -106,7 +106,7 @@ end
 -- Used as a custom command in rofi to move a window into the current tag
 -- instead of following it.
 -- Rofi has access to the X window id of the client.
-function helpers.rofi_move_client_here(window)
+function helper.rofi_move_client_here(window)
     local win = function (c)
         return awful.rules.match(c, {window = window})
     end
@@ -125,7 +125,7 @@ end
 -- cursor theme and looking in the "cursors folder"
 -- For example: "hand1" is the cursor that appears when hovering over
 -- links
-function helpers.add_hover_cursor(w, hover_cursor)
+function helper.add_hover_cursor(w, hover_cursor)
     local original_cursor = "left_ptr"
 
     w:connect_signal("mouse::enter", function ()
@@ -148,7 +148,7 @@ end
 -- Useful for quick switching after for example checking an incoming chat
 -- message at tag 2 and coming back to your work at tag 1 with the same
 -- keypress
-function helpers.tag_back_and_forth(tag_index)
+function helper.tag_back_and_forth(tag_index)
     local s = mouse.screen
     local tag = s.tags[tag_index]
     if tag then
@@ -167,7 +167,7 @@ end
 local floating_resize_amount = dpi(20)
 local tiling_resize_factor= 0.05
 ---------------
-function helpers.resize_dwim(c, direction)
+function helper.resize_dwim(c, direction)
     if awful.layout.get(mouse.screen) == awful.layout.suit.floating or (c and c.floating) then
         if direction == "up" then
             c:relative_move(  0,  0, 0, -floating_resize_amount)
@@ -192,7 +192,7 @@ function helpers.resize_dwim(c, direction)
 end
 
 -- Move client to screen edge, respecting the screen workarea
-function helpers.move_to_edge(c, direction)
+function helper.move_to_edge(c, direction)
     local workarea = awful.screen.focused().workarea
     if direction == "up" then
         c:geometry({ nil, y = workarea.y + beautiful.useless_gap * 2, nil, nil })
@@ -209,9 +209,9 @@ end
 -- Move to edge if the client / layout is floating
 -- Swap by index if maximized
 -- Else swap client by direction
-function helpers.move_client_dwim(c, direction)
+function helper.move_client_dwim(c, direction)
     if c.floating or (awful.layout.get(mouse.screen) == awful.layout.suit.floating) then
-        helpers.move_to_edge(c, direction)
+        helper.move_to_edge(c, direction)
     elseif awful.layout.get(mouse.screen) == awful.layout.suit.max then
         if direction == "up" or direction == "left" then
             awful.client.swap.byidx(-1, c)
@@ -224,7 +224,7 @@ function helpers.move_client_dwim(c, direction)
 end
 
 -- Make client floating and snap to the desired edge
-function helpers.float_and_edge_snap(c, direction)
+function helper.float_and_edge_snap(c, direction)
     -- if not c.floating then
     --     c.floating = true
     -- end
@@ -259,7 +259,7 @@ function helpers.float_and_edge_snap(c, direction)
 end
 
 -- Rounds a number to any number of decimals
-function helpers.round(number, decimals)
+function helper.round(number, decimals)
     local power = 10 ^ decimals
     return math.floor(number * power) / power
 end
@@ -267,7 +267,7 @@ end
 local volume_get_cmd = "pactl list sinks | grep -m 1 'Volume:' | awk '{print $5}' | cut -d '%' -f1 "
 local muted_get_cmd = "pactl list sinks | grep -m 1 'Mute:' | awk '{printf \"%s\", $2}'"
 local volume_notif
-function helpers.volume_control(step)
+function helper.volume_control(step)
     local cmd
     if step == 0 then
         -- Toggle mute
@@ -312,7 +312,7 @@ function helpers.volume_control(step)
 end
 
 -- TODO: notification action buttons
-function helpers.screenshot(action, delay)
+function helper.screenshot(action, delay)
     local cmd
     local timestamp = os.date("%Y.%m.%d-%H.%M.%S")
     local filename = user.screenshot_dir..timestamp..".screenshot.png"
@@ -359,7 +359,7 @@ function helpers.screenshot(action, delay)
 end
 
 local prompt_font = beautiful.prompt_font or "sans bold 8"
-function helpers.prompt(action, textbox, prompt, callback)
+function helper.prompt(action, textbox, prompt, callback)
     if action == "run" then
         awful.prompt.run {
             prompt       = prompt,
@@ -388,7 +388,7 @@ function helpers.prompt(action, textbox, prompt, callback)
     end
 end
 
-function helpers.run_or_raise(match, move, spawn_cmd, spawn_args)
+function helper.run_or_raise(match, move, spawn_cmd, spawn_args)
     local matcher = function (c)
         return awful.rules.match(c, match)
     end
@@ -421,7 +421,7 @@ function helpers.run_or_raise(match, move, spawn_cmd, spawn_args)
 end
 
 
-function helpers.toggle_scratchpad()
+function helper.toggle_scratchpad()
     local screen = awful.screen.focused()
 
     -- Get rid of it if it is focused
@@ -435,11 +435,11 @@ function helpers.toggle_scratchpad()
         --     client.focus:move_to_tag(tag)
         -- end
     else
-        helpers.run_or_raise({class = "scratchpad"}, true, "scratchpad")
+        helper.run_or_raise({class = "scratchpad"}, true, "scratchpad")
     end
 end
 
-function helpers.toggle_night_mode()
+function helper.toggle_night_mode()
     local cmd = "pgrep redshift > /dev/null && (pkill redshift && echo 'OFF') || (echo 'ON' && redshift -l 0:0 -t 3700:3700 -r &>/dev/null &)"
     awful.spawn.easy_async_with_shell(cmd, function(out)
         if out:match('ON') then
@@ -450,7 +450,7 @@ function helpers.toggle_night_mode()
     end)
 end
 
-function helpers.float_and_resize(c, width, height)
+function helper.float_and_resize(c, width, height)
     c.width = width
     c.height = height
     awful.placement.centered(c,{honor_workarea=true, honor_padding = true})
@@ -459,7 +459,7 @@ function helpers.float_and_resize(c, width, height)
     c:raise()
 end
 
-function helpers.copy(orig, copies)
+function helper.copy(orig, copies)
     copies = copies or {}
     local orig_type = type(orig)
     local copy
@@ -470,9 +470,9 @@ function helpers.copy(orig, copies)
             copy = {}
             copies[orig] = copy
             for orig_key, orig_value in next, orig, nil do
-                copy[helpers.copy(orig_key, copies)] = helpers.copy(orig_value, copies)
+                copy[helper.copy(orig_key, copies)] = helper.copy(orig_value, copies)
             end
-            setmetatable(copy, helpers.copy(getmetatable(orig), copies))
+            setmetatable(copy, helper.copy(getmetatable(orig), copies))
         end
     else -- number, string, boolean, etc
         copy = orig
@@ -481,20 +481,20 @@ function helpers.copy(orig, copies)
 end
 
 -- Helper function that updates a taglist item
-function helpers.update_taglist(item, tag, index)
+function helper.update_taglist(item, tag, index)
     if tag.selected then
-        item.markup = helpers.colorize_text(beautiful.taglist_text_focused[index], beautiful.taglist_fg_focus)
+        item.markup = helper.colorize_text(beautiful.taglist_text_focused[index], beautiful.taglist_fg_focus)
     elseif tag.urgent then
-        item.markup = helpers.colorize_text(beautiful.taglist_text_urgent[index], beautiful.taglist_fg_urgent)
+        item.markup = helper.colorize_text(beautiful.taglist_text_urgent[index], beautiful.taglist_fg_urgent)
     elseif #tag:clients() > 0 then
-        item.markup = helpers.colorize_text(beautiful.taglist_text_occupied[index], beautiful.taglist_fg_occupied)
+        item.markup = helper.colorize_text(beautiful.taglist_text_occupied[index], beautiful.taglist_fg_occupied)
     else
-        item.markup = helpers.colorize_text(beautiful.taglist_text_empty[index], beautiful.taglist_fg_empty)
+        item.markup = helper.colorize_text(beautiful.taglist_text_empty[index], beautiful.taglist_fg_empty)
     end
 end
 
 
-function helpers.set_wallpaper(s)
+function helper.set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
       local wallpaper =  beautiful.wallpaper
@@ -507,4 +507,4 @@ function helpers.set_wallpaper(s)
     end
 end
 
-return helpers
+return helper

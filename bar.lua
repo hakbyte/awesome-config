@@ -2,7 +2,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
-local helpers = require("helpers")
+local helper = require("helper")
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -71,7 +71,7 @@ local systray_container = {
 awful.screen.connect_for_each_screen(
     function(s)
         -- Set same wallpaper for each tag
-        helpers.set_wallpaper(s)
+        helper.set_wallpaper(s)
 
         -- Each screen has its own tag table.
         awful.tag({"1", "2", "3", "4", "5", "6", "7", "8", "9"}, s, awful.layout.layouts[1])
@@ -120,10 +120,10 @@ awful.screen.connect_for_each_screen(
                 self.valign = "center"
                 self.font = beautiful.taglist_text_font
 
-                helpers.update_taglist(self, tag, index)
+                helper.update_taglist(self, tag, index)
               end,
               update_callback = function(self, tag, index, _)
-                helpers.update_taglist(self, tag, index)
+                helper.update_taglist(self, tag, index)
               end,
             },
             buttons = taglist_buttons
