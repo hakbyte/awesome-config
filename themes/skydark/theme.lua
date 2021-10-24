@@ -36,7 +36,7 @@ theme.nord15 = "#B48EAD"
 theme.icon_theme               = nil
 theme.font                     = "SF Pro Text Semibold 11"
 theme.transparent              = "#00000000"
-theme.wallpaper                = theme_path .. "wallpaper.jpg"
+ theme.wallpaper                = theme_path .. "wallpaper.jpg"
 theme.background               = theme.nord0
 
 theme.bg_normal                = theme.nord0
@@ -59,7 +59,7 @@ theme.border_marked            = theme.nord11
 theme.tasklist_bg_focus        = theme.nord0
 theme.tasklist_icon_size       = dpi(5)
 theme.tasklist_plain_task_name = true
-theme.taglist_spacing          = dpi(10)
+theme.taglist_spacing          = dpi(5)
 
 --
 -- Awesome menu
